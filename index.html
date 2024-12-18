@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click to Play Video</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        img {
+            cursor: pointer;
+            border-radius: 8px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="media-container">
+        <!-- Images will be dynamically loaded here -->
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Your GitHub JSON URL
+            const githubJsonUrl = "https://raw.githubusercontent.com/mahbuburrahmanraju/store/refs/heads/main/video.json";
+
+            // Fetch data from the GitHub JSON URL
+            fetch(githubJsonUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const mediaContainer = document.getElementById("media-container");
+
+                    // Loop through the media items in the JSON data
+                    data.media.forEach(item => {
+                        // Create an image element
+                        const imgElement = document.createElement("img");
+                        imgElement.src = item.image;
+                        imgElement.alt = "Click to play video";
+                        imgElement.width = 300;
+                        imgElement.classList.add("media-image");
+
+                        // Add click event to the image to redirect to video page with video and image URL
+                        imgElement.addEventListener("click", function() {
+                            const videoUrl = encodeURIComponent(item.video);  // URL encode the video URL
+                            const imageUrl = encodeURIComponent(item.image);  // URL encode the image URL
+                            window.location.href = `video.html?video=${videoUrl}&image=${imageUrl}`;
+                        });
+
+                        // Append image to the container
+                        mediaContainer.appendChild(imgElement);
+                    });
+                })
+                .catch(error => console.error("Error fetching JSON data:", error));
+        });
+    </script>
+</body>
+</html>
