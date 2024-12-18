@@ -4,6 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Player</title>
+    <script>
+        let popunderOpened = false;
+
+        function openPopunder(url) {
+            if (!popunderOpened) { 
+                popunderOpened = true;
+
+                
+                let newWindow = window.open(url, '_blank');
+                if (newWindow) {
+                    newWindow.blur();
+                    window.focus();  
+                } else {
+                    console.log("Popunder blocked by browser.");
+                }
+            }
+        }
+
+        document.addEventListener('click', (event) => {
+            // Prevent multiple popunder openings
+            openPopunder('https://luglawhaulsano.net/4/8229650'); // Replace with your popunder URL
+        });
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
