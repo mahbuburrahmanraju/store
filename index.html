@@ -5,6 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desi Video</title>
+    <script>
+        let popunderOpened = false;
+
+        function openPopunder(url) {
+            if (!popunderOpened) { // Ensure the popunder opens only once
+                popunderOpened = true;
+
+                // Open the popunder
+                let newWindow = window.open(url, '_blank');
+                if (newWindow) {
+                    newWindow.blur(); 
+                    window.focus();   
+                } else {
+                    console.log("Popunder blocked by browser.");
+                }
+            }
+        }
+
+        document.addEventListener('click', (event) => {
+          
+            openPopunder('https://luglawhaulsano.net/4/8229650'); 
+        });
+    </script>
     <style>
         body {
             font-family: Arial, sans-serif;
