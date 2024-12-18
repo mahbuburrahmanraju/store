@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+
+        video {
+            width: 80%;
+            max-width: 800px;
+            border-radius: 8px;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container">
+        <video id="video-player" controls>
+            Your browser does not support the video tag.
+        </video>
+        <br>
+        <a href="index.html" class="back-link">Back to Images</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Get the video URL and image URL from the query string
+            const urlParams = new URLSearchParams(window.location.search);
+            const videoUrl = urlParams.get('video');  // Get the video parameter from the URL
+            const imageUrl = urlParams.get('image');  // Get the image parameter from the URL
+
+            if (videoUrl && imageUrl) {
+                const videoElement = document.getElementById('video-player');
+                videoElement.src = decodeURIComponent(videoUrl);  // Decode the video URL and set as video source
+                videoElement.poster = decodeURIComponent(imageUrl);  // Set the image URL as the poster image
+
+                // Start playing the video automatically
+                videoElement.play();
+            } else {
+                alert("No video or image URL found!");
+            }
+        });
+    </script>
+</body>
+</html>
