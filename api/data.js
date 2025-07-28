@@ -1,10 +1,10 @@
 export default async function handler(req, res) {
-  const secretKey = 'raju123'; // Change to your custom key
+  const secretKey = 'pompombd'; // Change to your custom key
   const key = req.query.key;
 
   // (Optional) Check if the request came from your domain
   const referer = req.headers.referer || "";
-  if (!referer.includes("yourdomain.com")) {
+  if (!referer.includes("https://pompombd.vercel.app")) {
     return res.status(403).json({ error: "Access Denied: Invalid Domain" });
   }
 
