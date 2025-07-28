@@ -4,7 +4,7 @@ export default async function handler(req, res) {
 
   // (Optional) Check if the request came from your domain
   const referer = req.headers.referer || "";
-  if (!referer.includes("https://pompombd.vercel.app")) {
+  if (!referer.includes("")) {
     return res.status(403).json({ error: "Access Denied: Invalid Domain" });
   }
 
