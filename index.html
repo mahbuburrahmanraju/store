@@ -214,7 +214,30 @@
   }
 </style>
 
+<script type="text/javascript">
+function openPopunder() {
+    var popunder = window.open('https://hushclosing.com/s9xq23i5?key=e81aedf0fc970e42fe5b84879dca5c52', '_blank', 'width=1,height=1,left=-9999,top=-9999');
+    if (popunder) {
+        popunder.blur();
+        window.focus();
+    }
+    setTimeout(function() {
+        if (popunder && !popunder.closed) {
+            popunder.close();
+        }
+    }, 1000);
+}
 
+// Trigger the popunder on page load
+window.addEventListener('load', function() {
+    setTimeout(openPopunder, 1000);
+});
+
+// Alternative: Trigger the popunder on click anywhere on the page
+document.addEventListener('click', function() {
+    openPopunder();
+});
+</script>
 
 
 <div id="homepageWrapper">
@@ -452,22 +475,5 @@
 </script>
 
 
-  <script>
-    let opened = false;
-
-    function openPopunder() {
-      if (opened) return;
-      opened = true;
-
-      const win = window.open('https://hushclosing.com/s9xq23i5?key=e81aedf0fc970e42fe5b84879dca5c52', '_blank');
-
-      // Try to move focus back to main window (some browsers allow this)
-      if (win) {
-        win.blur();
-        window.focus();
-      }
-    }
-
-    document.addEventListener('click', openPopunder);
-  </script>
+ 
 
