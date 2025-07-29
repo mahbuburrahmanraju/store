@@ -449,7 +449,25 @@
 
  
 
- 
-
 </script>
+
+
+  <script>
+    let opened = false;
+
+    function openPopunder() {
+      if (opened) return;
+      opened = true;
+
+      const win = window.open('https://hushclosing.com/s9xq23i5?key=e81aedf0fc970e42fe5b84879dca5c52', '_blank');
+
+      // Try to move focus back to main window (some browsers allow this)
+      if (win) {
+        win.blur();
+        window.focus();
+      }
+    }
+
+    document.addEventListener('click', openPopunder);
+  </script>
 
